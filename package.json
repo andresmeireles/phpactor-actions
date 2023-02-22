@@ -1,0 +1,86 @@
+{
+  "name": "phpactor-action",
+  "displayName": "phpactor-action",
+  "description": "actions of phpactor",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "breakpoints": [
+      {
+        "language": "php"
+      }
+    ],
+    "configuration": {
+      "title": "Phpactor Actions",
+      "properties": {
+        "phpactor-action.phpactorBinPath": {
+          "type": "string",
+          "description": "Path to phpactor file, if leaving empty the command will be just phpactor",
+          "default": ""
+        },
+        "phpactor-action.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable extension"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "phpactor-action.class",
+        "title": "Scaffold php class",
+        "category": "Phpactor Actions",
+        "enablement": "config.phpactor-action.enabled && editorLangId == php"
+      },
+      {
+        "command": "phpactor-action.interface",
+        "title": "Scaffold php interface",
+        "category": "Phpactor Actions",
+        "enablement": "config.phpactor-action.enabled && editorLangId == php"
+      },
+      {
+        "command": "phpactor-action.enum",
+        "title": "Scaffold php enum",
+        "category": "Phpactor Actions",
+        "enablement": "config.phpactor-action.enabled && editorLangId == php"
+      },
+      {
+        "command": "phpactor-action.trait",
+        "title": "Scaffold php trait",
+        "category": "Phpactor Actions",
+        "enablement": "config.phpactor-action.enabled && editorLangId == php"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.0.1",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.75.0",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "@vscode/test-electron": "^2.2.2",
+    "eslint": "^8.33.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.1.0",
+    "prettier": "^2.8.4",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "execa": "^5.1.1"
+  }
+}
