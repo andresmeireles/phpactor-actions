@@ -8,7 +8,7 @@
     "url": "https://github.com/andresmeireles/phpactor-actions"
   },
   "icon": "images/PA.jpg",
-  "version": "0.1.2",
+  "version": "0.2.2",
   "engines": {
     "vscode": "^1.75.0"
   },
