@@ -2,6 +2,10 @@
   "name": "phpactor-action",
   "displayName": "phpactor-action",
   "description": "actions of phpactor",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andresmeireles/phpactor-actions"
+  },
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.75.0"
