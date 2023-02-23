@@ -2,6 +2,7 @@
   "name": "phpactor-action",
   "displayName": "phpactor-action",
   "description": "actions of phpactor",
+  "publisher": "andresmeireles",
   "repository": {
     "type": "git",
     "url": "https://github.com/andresmeireles/phpactor-actions"
