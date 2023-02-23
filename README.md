@@ -1,4 +1,4 @@
-# phpactor-action
+# PhpActor Action
 
 <p align="center">
 <img src="images/PA.jpg" alt="MarineGEO circle logo" style="height: 250px; width:250px;"/>
