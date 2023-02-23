@@ -7,7 +7,10 @@ export default async function (path: string) {
         if (files.indexOf('composer.json') === -1) {
             return false;
         }
-        const { stdout } = await execa(`composer`, ['-d', path, 'validate', '--no-ansi']);
+        const { stdout, stderr } = await execa(`composer`, ['-d', path, 'validate', '--no-ansi']);
+        if (stderr !== undefined) {
+            return stderr.indexOf('./composer.json is valid') !== -1;
+        }
         return stdout.indexOf('./composer.json is valid') !== -1;
     } catch (e) {
         console.log(e);
