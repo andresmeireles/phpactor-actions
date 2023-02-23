@@ -31,15 +31,15 @@ const actions: ActionInterface[] = [
 ];
 
 export function activate(context: vscode.ExtensionContext) {
-    const config = vscode.workspace.getConfiguration().get('phpactor-action') as ConfigInterface;
-    if (!config.enabled) return;
+    const { enabled } = vscode.workspace.getConfiguration().get('phpactor-action') as ConfigInterface;
+    if (!enabled) return;
 
     console.log('Congratulations, your extension "phpactor-action" is now active!');
 
     for (const act of actions) {
         const disposable = vscode.commands.registerCommand(`phpactor-action.${act.name}`, async () => {
-            const configPath = config.phpactorBinPath;
-            const bin = `${configPath.trim().length === 0 ? '' : configPath + '/'}phpactor`;
+            const { phpactorBinPath } = vscode.workspace.getConfiguration().get('phpactor-action') as ConfigInterface;
+            const bin = `${phpactorBinPath.trim().length === 0 ? '' : phpactorBinPath + '/'}phpactor`;
             if (!phpActorBinIsValid(bin)) {
                 vscode.window.showErrorMessage(`Path ${bin} not exists or is invalid`);
                 return;

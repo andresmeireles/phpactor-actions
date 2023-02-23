@@ -1,8 +1,9 @@
-import { statSync } from 'fs';
+import { accessSync, constants, lstat, lstatSync } from 'fs';
 
 export default function (bin: string): boolean {
     try {
-        statSync(bin);
+        if (!lstatSync(bin).isFile()) return false;
+        accessSync(bin, constants.X_OK);
         return true;
     } catch (e) {
         return false;
