@@ -1,5 +1,9 @@
 # phpactor-action
 
+<p align="center">
+<img src="images/PA.jpg" alt="MarineGEO circle logo" style="height: 250px; width:250px;"/>
+</p>
+
 A simple plugin to implement some [PhpActor](https://phpactor.readthedocs.io/en/master/) refactors.
 
 **This plugins only use some refactor actions, its is not an LSP!**
