@@ -1,7 +1,7 @@
 {
   "name": "phpactor-action",
   "displayName": "phpactor-action",
-  "description": "actions of phpactor",
+  "description": "Refactor and generate actions using phpactor",
   "publisher": "andresmeireles",
   "repository": {
     "type": "git",
