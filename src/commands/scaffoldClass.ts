@@ -16,7 +16,6 @@ export async function makeClass(bin: string) {
     ]);
     const { exists } = JSON.parse(stdout);
     if (exists) {
-        // const option = vscode.window.showInformationMessage('Override file', 'Yes', 'No');
         const option = await vscode.window.showQuickPick(
             [
                 { label: 'Yes', description: 'Override file', value: true },

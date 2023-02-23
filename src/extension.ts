@@ -1,7 +1,6 @@
-import execa = require('execa');
-import { readdirSync, statSync } from 'fs';
 import path = require('path');
 import * as vscode from 'vscode';
+import { copy } from './commands/copyClass';
 import { makeClass } from './commands/scaffoldClass';
 import { makeEnum } from './commands/scaffoldEnum';
 import { makeInterface } from './commands/scaffoldInterface';
@@ -27,6 +26,10 @@ const actions: ActionInterface[] = [
     {
         name: 'trait',
         action: makeTrait,
+    },
+    {
+        name: 'copy',
+        action: copy,
     },
 ];
 
