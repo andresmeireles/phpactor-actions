@@ -10,7 +10,7 @@ export default async function (path: string) {
         const { stdout } = await execa(`composer`, ['-d', path, 'validate', '--no-ansi']);
         return stdout === './composer.json is valid';
     } catch (e) {
-        console.log(e);
+        console.warn(e);
         return false;
     }
 }
