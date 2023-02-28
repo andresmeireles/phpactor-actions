@@ -73,6 +73,7 @@ export function activate(context: vscode.ExtensionContext) {
                     vscode.window.showErrorMessage(`File has no workspace`);
                     return;
                 }
+                console.log(await hasValidComposerFile(projectRoot));
                 if (!(await hasValidComposerFile(projectRoot))) {
                     vscode.window.showErrorMessage(`Workspace has no valid composer.json file`);
                     return;

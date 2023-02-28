@@ -8,10 +8,10 @@ export default async function (path: string) {
             return false;
         }
         const { stdout, stderr } = await execa(`composer`, ['-d', path, 'validate', '--no-ansi']);
-        if (stderr !== undefined) {
-            return stderr.indexOf('./composer.json is valid') !== -1;
+        if (stderr.trim().length > 1) {
+            return stderr.includes('composer.json is valid');
         }
-        return stdout.indexOf('./composer.json is valid') !== -1;
+        return stdout.includes('composer.json is valid');
     } catch (e) {
         console.warn(e);
         return false;
