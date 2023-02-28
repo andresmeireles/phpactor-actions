@@ -13,7 +13,7 @@ export default async function (path: string) {
         }
         return stdout.indexOf('./composer.json is valid') !== -1;
     } catch (e) {
-        console.log(e);
+        console.warn(e);
         return false;
     }
 }

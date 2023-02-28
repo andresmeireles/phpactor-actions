@@ -8,7 +8,6 @@ export async function copy(bin: string) {
     try {
         const { fsPath, path } = vscode.window.activeTextEditor!.document.uri;
         const fileName = basename(fsPath);
-        console.log(fileName);
         const folderPath = await vscode.window.showOpenDialog({
             canSelectMany: false,
             openLabel: 'Select',
@@ -33,10 +32,10 @@ export async function copy(bin: string) {
             }
         }
         const { stdout } = await execa(bin, ['class:copy', fsPath, newFilePath, '-d', projectDir()]);
-        console.log(stdout);
+        console.warn(stdout);
         vscode.window.showInformationMessage('class copy successfully');
     } catch (e) {
-        console.log(e);
+        console.warn(e);
         vscode.window.showErrorMessage('error on class copy');
     }
 }

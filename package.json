@@ -15,13 +15,11 @@
   "categories": [
     "Other"
   ],
+  "activationEvents": [
+		"onLanguage:php"
+	],
   "main": "./out/extension.js",
   "contributes": {
-    "breakpoints": [
-      {
-        "language": "php"
-      }
-    ],
     "configuration": {
       "title": "Phpactor Actions",
       "properties": {
