@@ -1,3 +1,5 @@
+import * as vscode from 'vscode';
+
 export interface ConfigInterface {
     phpactorBinPath: string;
     enabled: boolean;

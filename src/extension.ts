@@ -51,7 +51,6 @@ export function activate(context: vscode.ExtensionContext) {
             providedCodeActionKinds: GenerateFiles.providedCodeActionKinds,
         })
     );
-
     context.subscriptions.push(
         vscode.languages.registerCodeActionsProvider('php', new Copy(), {
             providedCodeActionKinds: Copy.providedCodeActionKinds,
