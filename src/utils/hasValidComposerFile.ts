@@ -8,12 +8,12 @@ export default async function (path: string) {
             return false;
         }
         const { stdout, stderr } = await execa(`composer`, ['-d', path, 'validate', '--no-ansi']);
-        if (stderr.trim().length > 1) {
-            return stderr.includes('composer.json is valid');
-        }
-        return stdout.includes('composer.json is valid');
-    } catch (e) {
+        return stdout.includes('composer.json is valid') || stderr.includes('composer.json is valid');
+    } catch (e: any) {
+        if (typeof e !== 'object') return false;
         console.warn(e);
-        return false;
+        const {stdout, stderr} = e;
+        console.log(stdout, stderr);
+        return stdout.includes('composer.json is valid') || stderr.includes('composer.json is valid');
     }
 }
