@@ -3,7 +3,11 @@ import * as vscode from 'vscode';
 import projectDir from '../utils/projectDir';
 
 export async function makeClass(bin: string) {
+    console.log(bin);
+
     const file = vscode.window.activeTextEditor!.document.uri.path;
+
+    // execute command to create a file
     const { stdout } = await execa(bin, [
         'class:new',
         file,
@@ -14,7 +18,9 @@ export async function makeClass(bin: string) {
         '--no-ansi',
         '--format=json',
     ]);
+    
     const { exists } = JSON.parse(stdout);
+    
     if (exists) {
         const option = await vscode.window.showQuickPick(
             [
@@ -40,5 +46,6 @@ export async function makeClass(bin: string) {
             '--force',
         ]);
     }
+
     vscode.window.showInformationMessage('class successfully created!');
 }

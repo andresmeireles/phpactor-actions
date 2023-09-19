@@ -3,11 +3,11 @@ import Copy from './actions/Copy';
 import GenerateFiles from './actions/GenerateFiles';
 import { copy, makeClass, makeEnum, makeInterface, makeTrait } from './commands/commands';
 import { subscribeToDocumentChanges } from './diagnostics/empty';
-import { ActionInterface, ConfigInterface } from './interfaces';
+import { ActionInterface } from './interfaces';
 import { canExecute } from './utils/activable';
 import hasValidComposerFile from './utils/hasValidComposerFile';
-import phpActorBinIsValid from './utils/phpActorBinIsValid';
 import projectDir from './utils/projectDir';
+import getBin from './utils/getBin';
 
 export const generates: ActionInterface[] = [
     {
@@ -60,14 +60,10 @@ export function activate(context: vscode.ExtensionContext) {
     for (const act of actions) {
         context.subscriptions.push(
             vscode.commands.registerCommand(`phpactor-action.${act.name}`, async () => {
-                const { phpactorBinPath } = vscode.workspace
-                    .getConfiguration()
-                    .get('phpactor-action') as ConfigInterface;
-                const bin = `${phpactorBinPath.trim().length === 0 ? '' : phpactorBinPath + '/'}phpactor`;
-                if (!phpActorBinIsValid(bin)) {
-                    vscode.window.showErrorMessage(`Path ${bin} not exists or is invalid`);
-                    return;
-                }
+                const bin = getBin(vscode.workspace);
+
+                console.log(bin);
+                
                 const projectRoot = projectDir();
                 if (projectRoot === 'none') {
                     vscode.window.showErrorMessage(`File has no workspace`);
